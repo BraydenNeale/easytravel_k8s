@@ -35,7 +35,7 @@ spec:
           value: DatabaseCleanup
         - name: ET_VISIT_NUMBER
           value: "2"
-        image: dynatrace/easytravel-loadgen
+        image: dynatrace/easytravel-loadgen:2.0.0.3218
         name: loadgen
         resources:
           limits:

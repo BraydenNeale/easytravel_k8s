@@ -26,7 +26,7 @@ spec:
           value: -Dconfig.apmServerDefault=APM -Xmx256m
         - name: ET_BACKEND_URL
           value: http://easytravel-backend:8080
-        image: dynatrace/easytravel-frontend
+        image: dynatrace/easytravel-frontend:2.0.0.3218
         name: easytravel-frontend
         ports:
         - containerPort: 8080

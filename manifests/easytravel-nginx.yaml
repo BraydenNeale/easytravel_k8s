@@ -26,7 +26,7 @@ spec:
           value: easytravel-frontend:8080
         - name: ET_BACKEND_LOCATION
           value: easytravel-backend:8080
-        image: dynatrace/easytravel-nginx
+        image: dynatrace/easytravel-nginx:2.0.0.3218
         name: easytravel-www
         ports:
         - containerPort: 80

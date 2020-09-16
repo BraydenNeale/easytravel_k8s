@@ -29,7 +29,7 @@ spec:
         envFrom:
         - secretRef:
             name: mongo-credentials
-        image: dynatrace/easytravel-backend
+        image: dynatrace/easytravel-backend:2.0.0.3218
         name: easytravel-backend
         resources:
           limits:
