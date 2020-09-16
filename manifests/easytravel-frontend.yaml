@@ -21,33 +21,33 @@ spec:
         app: easytravel
     spec:
       containers:
-      - env:
-        - name: CATALINA_OPTS
-          value: -Dconfig.apmServerDefault=APM -Xmx256m
-        - name: ET_BACKEND_URL
-          value: http://easytravel-backend:8080
-        image: dynatrace/easytravel-frontend:2.0.0.3218
+      - image: dynatrace/easytravel-frontend:2.0.0.3218
         name: easytravel-frontend
+        envFrom:
+        - configMapRef:
+            name: easytravel-config
+        - secretRef:
+            name: mongo-credentials
         ports:
         - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 120
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 120
         resources:
           limits:
             cpu: 200m
             memory: 256Mi
           requests:
-            cpu: 100m
+            cpu: 200m
             memory: 256Mi
 ---
 apiVersion: v1

@@ -24,19 +24,11 @@ spec:
         app: easytravel
     spec:
       containers:
-      - env:
-        - name: ET_APM_SERVER_DEFAULT
-          value: APM
-        - name: ET_FRONTEND_URL
-          value: http://easytravel-www:80
-        - name: ET_BACKEND_URL
-          value: http://easytravel-www:8080
-        - name: ET_PROBLEMS
-          value: DatabaseCleanup
-        - name: ET_VISIT_NUMBER
-          value: "2"
-        image: dynatrace/easytravel-loadgen:2.0.0.3218
+      - image: dynatrace/easytravel-loadgen:2.0.0.3218
         name: loadgen
+        envFrom:
+        - configMapRef:
+            easytravel-config
         resources:
           limits:
             cpu: 200m
