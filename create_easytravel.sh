@@ -9,4 +9,4 @@ kubectl apply -f manifests/easytravel-frontend.yaml
 kubectl apply -f manifests/easytravel-nginx.yaml
 sleep 30
 
-kubectl apply -f manifests/easytravel-loadgen-deployment.yaml
+kubectl apply -f manifests/easytravel-loadgen.yaml

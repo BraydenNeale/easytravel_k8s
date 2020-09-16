@@ -62,9 +62,11 @@ metadata:
   namespace: easytravel
 spec:
   ports:
-  - port: 80
+  - name: "80"
+    port: 80
     targetPort: 80
-  - port: 8080
+  - name: "8080"
+    port: 8080
     targetPort: 8080
   selector:
     app: easytravel
