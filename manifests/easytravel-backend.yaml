@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-backend
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+        app: easytravel
+        tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: backend
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "high"
+        tier: backend
+        app: easytravel
+    spec:
+      containers:
+      - env:
+        - name: CATALINA_OPTS
+          value: -Dconfig.apmServerDefault=APM -Xmx256m
+        - name: ET_DATABASE_LOCATION
+          value: easytravel-mongodb:27017
+        envFrom:
+        - secretRef:
+            name: mongo-credentials
+        image: dynatrace/easytravel-backend
+        name: easytravel-backend
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /services/JourneyService/getLocations
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 120
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: easytravel
+    tier: backend
+  name: easytravel-backend
+  namespace: easytravel
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: easytravel
+    tier: backend
+  type: ClusterIP

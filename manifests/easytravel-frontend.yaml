@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-frontend
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+      app: easytravel
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: frontend
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "high"
+        tier: frontend
+        app: easytravel
+    spec:
+      containers:
+      - env:
+        - name: CATALINA_OPTS
+          value: -Dconfig.apmServerDefault=APM -Xmx256m
+        - name: ET_BACKEND_URL
+          value: http://easytravel-backend:8080
+        image: dynatrace/easytravel-frontend
+        name: easytravel-frontend
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 120
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: easytravel
+    tier: frontend
+  name: easytravel-frontend
+  namespace: easytravel
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: easytravel
+    tier: frontend
+  type: ClusterIP

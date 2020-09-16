@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: easytravel
+    tier: loadgen
+  name: loadgen
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+      app: easytravel
+      tier: loadgen
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: loadgen
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "low"
+        tier: loadgen
+        app: easytravel
+    spec:
+      containers:
+      - env:
+        - name: ET_APM_SERVER_DEFAULT
+          value: APM
+        - name: ET_FRONTEND_URL
+          value: http://easytravel-www:80
+        - name: ET_BACKEND_URL
+          value: http://easytravel-www:8080
+        - name: ET_PROBLEMS
+          value: DatabaseCleanup
+        - name: ET_VISIT_NUMBER
+          value: "2"
+        image: dynatrace/easytravel-loadgen
+        name: loadgen
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi

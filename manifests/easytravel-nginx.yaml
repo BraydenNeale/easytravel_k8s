@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easytravel-www
+  namespace: easytravel
+spec:
+  selector:
+    matchLabels:
+      app: easytravel
+      tier: web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: easytravel
+        tier: web
+      annotations:
+        contact: "demo@dynatrace.com"
+        priority: "high"
+        tier: web
+        app: easytravel
+    spec:
+      containers:
+      - env:
+        - name: ET_FRONTEND_LOCATION
+          value: easytravel-frontend:8080
+        - name: ET_BACKEND_LOCATION
+          value: easytravel-backend:8080
+        image: dynatrace/easytravel-nginx
+        name: easytravel-www
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 120
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: easytravel
+    tier: web
+  name: easytravel-www
+  namespace: easytravel
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: easytravel
+    tier: web
+  type: LoadBalancer
