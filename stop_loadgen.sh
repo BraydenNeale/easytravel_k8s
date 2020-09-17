@@ -1,0 +1,1 @@
+kubectl -n easytravel scale --replicas=0 deployment/loadgen
