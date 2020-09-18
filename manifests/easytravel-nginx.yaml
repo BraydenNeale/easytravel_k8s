@@ -28,7 +28,6 @@ spec:
             name: easytravel-config
         ports:
         - containerPort: 80
-        - containerPort: 8080
         resources:
           limits:
             cpu: 200m
@@ -60,12 +59,8 @@ metadata:
   namespace: easytravel
 spec:
   ports:
-  - name: "80"
-    port: 80
+  - port: 80
     targetPort: 80
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
   selector:
     app: easytravel
     tier: web
