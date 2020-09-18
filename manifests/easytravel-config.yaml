@@ -13,4 +13,4 @@ data:
   ET_PROBLEMS_DELAY: "0"
   ET_VISIT_NUMBER: "2"
   ET_APM_SERVER_DEFAULT: APM
-  CATALINA_OPTS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1"
+  CATALINA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=80"
