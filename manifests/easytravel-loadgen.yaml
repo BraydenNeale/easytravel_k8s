@@ -28,7 +28,7 @@ spec:
         name: loadgen
         envFrom:
         - configMapRef:
-            easytravel-config
+            name: easytravel-config
         resources:
           limits:
             cpu: 200m
