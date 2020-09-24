@@ -1,0 +1,5 @@
+config:
+  - overview-dashboard: "overview-dashboard.json"
+
+overview-dashboard:
+  - name: "Monitoring as Code Dashboard"

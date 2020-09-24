@@ -1,0 +1,4 @@
+dynatrace_tenant:
+  - name: "dynatrace_tenant"
+  - tenant-url: https://[DT_TENANT_ID].live.dynatrace.com
+  - env-token-name: DYNATRACE_TENANT_TOKEN
