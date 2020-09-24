@@ -1,2 +1,2 @@
-./monitoring/tenants.yaml
-./monitoring/.logs
+monitoring/tenants.yaml
+monitoring/.logs
