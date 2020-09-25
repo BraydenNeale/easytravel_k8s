@@ -11,7 +11,29 @@
     `self-monitoring-1.2.1.exe -tenants="tenants.yaml"`
 
 Using the Dynatrace Monitoring as code utility to create resources:
-* Dashboards
-* Management Zones
-* Tagging rules
-* Application detection rules
+### Dashboards
+* Monitoring as code example
+* Easytravel application overview
+### Management Zones
+* Infrastructure
+    * Host
+    * K8s cluster
+* Business
+    * Application
+* Easytravel
+    * Hosts, Services, Processes, Applications
+### Tagging rules
+* K8s Annotations
+    * contact
+    * priority
+    * tier
+    * app
+### Application
+* Detection rules - easytravel host/domain
+* Configuration
+### Alerting Profile
+* Tier: Frontend, Backend
+* Smartscape: Infra, Service, Application
+* Auto remediation: Specific problem type and tags
+### Kubernetes API Integration
+* Connecting an ActiveGate to the K8s API
