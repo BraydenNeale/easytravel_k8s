@@ -35,5 +35,7 @@ Using the Dynatrace Monitoring as code utility to create resources:
 * Tier: Frontend, Backend
 * Smartscape: Infra, Service, Application
 * Auto remediation: Specific problem type and tags
+### Problem notifications
+* Emails for each alerting profile
 ### Kubernetes API Integration
 * Connecting an ActiveGate to the K8s API
