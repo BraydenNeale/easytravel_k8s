@@ -1,0 +1,11 @@
+{
+  "type": "WEBHOOK",
+  "name": "{{ .name }}",
+  "alertingProfile": "{{ .alerting_profile_id }}",
+  "active": "{{ .alert_active }}",
+  "url": "{{ .teams_webhook_url }}",
+  "acceptAnyCertificate": " {{ .accept_any_cert }}",
+  "payload": "{\n\"title\":\"{ProblemTitle}\",\n\"text\":\"{ProblemDetailsHTML}\",\n\"themeColor\":\"EA4300\"\n}",
+  "headers": [],
+  "notifyEventMergesEnabled": "{{ .notify_on_merge_events }}"
+}

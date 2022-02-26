@@ -1,0 +1,13 @@
+{
+    "type": "EMAIL",
+    "name": "{{ .name }}",
+    "alertingProfile": "{{ .alerting_profile_id }}",
+    "active": " {{ .alert_active }}",
+    "subject": "{{ .subject }}",
+    "body": "{ProblemDetailsHTML}",
+    "receivers": [
+      {{ .receivers }}
+    ],
+    "ccReceivers": [],
+    "bccReceivers": []
+  }

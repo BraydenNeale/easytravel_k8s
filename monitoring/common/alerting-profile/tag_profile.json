@@ -1,0 +1,92 @@
+{
+  "displayName": "{{ .name }}",
+  "rules": [
+    {
+      "severityLevel": "CUSTOM_ALERT",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .custom_delay_mins }}"
+    },
+    {
+      "severityLevel": "AVAILABILITY",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .availability_delay_mins }}"
+    },
+    {
+      "severityLevel": "MONITORING_UNAVAILABLE",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .monitoring_unavailable_delay_mins }}"
+    },
+    {
+      "severityLevel": "PERFORMANCE",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .performance_delay_mins }}"
+    },
+    {
+      "severityLevel": "ERROR",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .error_delay_mins }}"
+    },
+    {
+      "severityLevel": "RESOURCE_CONTENTION",
+      "tagFilter": {
+        "includeMode": "INCLUDE_ANY",
+        "tagFilters": [
+          {
+            "context": "{{ .tag_context }}",
+            "key": "{{ .tag_key }}",
+            "value": "{{ .tag_value }}"
+          }
+        ]
+      },
+      "delayInMinutes": "{{ .resource_delay_mins }}"
+    }
+  ],
+  "managementZoneId": "{{ .management_zone_id }}",
+  "mzId": "{{ .management_zone_id }}",
+  "eventTypeFilters": []
+}

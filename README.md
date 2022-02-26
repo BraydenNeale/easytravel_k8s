@@ -1,41 +1,72 @@
-# Installing
-`./scripts/create_easytravel.sh`
-`./scripts/start_loadgen`
+# Easy Travel Setup
 
-# Configuration
-* Add your Dynatrace tenant to **tenants.yaml**: https://[DT_TENANT_ID].live.dynatrace.com
-* `set DYNATRACE_TENANT_TOKEN=<YOUR TOKEN>`
-* Validate monitoring config: 
-    `self-monitoring-1.2.1.exe -tenants="tenants.yaml" -dry-run`
-* Push All Projects Config to all Tenants: 
-    `self-monitoring-1.2.1.exe -tenants="tenants.yaml"`
+## K8s cluster
 
+## Install Dynatrace Operator
+
+## Install EasyTravel
+```
+./scripts/create_easytravel.sh
+./scripts/start_loadgen
+```
+
+# Monitoring Automation
+Monitoring settings are automated through the use of [Dynatrace Monaco](https://github.com/dynatrace-oss/dynatrace-monitoring-as-code_). Here is a link to the official [Documenation](https://dynatrace-oss.github.io/dynatrace-monitoring-as-code/)
+
+## Running Monaco
+### Set Env variables:
+Powershell
+```
+$ENV:NEW_CLI = 1
+$ENV:DYNATRACE_URL = 'https://[ID].live.dynatrace.com'
+$ENV:DYNATRACE_TOKEN = 'dtco1.****'
+$ENV:EASYTRAVEL_EMAIL_CONTACTS = 'test@example.com, hello@world.com'
+```
+
+Bash
+```
+export NEW_CLI = 1
+export DYNATRACE_URL = 'https://[ID].live.dynatrace.com'
+export DYNATRACE_TOKEN = 'dtco1.****'
+export EASYTRAVEL_EMAIL_CONTACTS = 'test@example.com, hello@world.com'
+```
+
+### Run Monaco
+Specific Project e.g. easyTravel
+```
+monaco deploy -e environments.yaml -s dynatrace_tenant -p projects/PROJECT --dry-run
+monaco deploy -e environments.yaml -s dynatrace_tenant -p projects/PROJECT
+```
+
+ALL projects
+```
+monaco deploy -e environments.yaml -s dynatrace_tenant -p projects --dry-run
+monaco deploy -e environments.yaml -s dynatrace_tenant -p projects
+```
+
+### Delete config
+Copy required delete config sections from `delete_backup.yaml` to a file called `delete.yaml`. Then run monaco
+
+## Settings Created in Dynatrace
 Using the Dynatrace Monitoring as code utility to create resources:
 ### Dashboards
-* Monitoring as code example
-* Easytravel application overview
 ### Management Zones
-* Infrastructure
-    * Host
-    * K8s cluster
-* Business
-    * Application
-* Easytravel
-    * Hosts, Services, Processes, Applications
+* General
+    * Team: Infrastructure - All Hosts, k8s cluster
+    * Team: Business - All Applications, synthetics
+    * Environment: Prod - All production entities
+* Applications
+    * Application: Easytravel - easyTravel Dynatrace entitiesHosts
 ### Tagging rules
 * K8s Annotations
     * contact
     * priority
     * tier
-    * app
-### Application
-* Detection rules - easytravel host/domain
-* Configuration
+    * application
+### Application Rules
+
 ### Alerting Profile
-* Tier: Frontend, Backend
-* Smartscape: Infra, Service, Application
-* Auto remediation: Specific problem type and tags
+
 ### Problem notifications
-* Emails for each alerting profile
-### Kubernetes API Integration
-* Connecting an ActiveGate to the K8s API
+
+### Service Level Objectives - SLO
