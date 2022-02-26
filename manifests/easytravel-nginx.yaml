@@ -14,6 +14,13 @@ spec:
       labels:
         app: easytravel
         tier: web
+        app.kubernetes.io/name: easytravel-nginx
+        app.kubernetes.io/instance: easytravel-nginx-1.0.0
+        app.kubernetes.io/version: "1.0.0"
+        app.kubernetes.io/component: webserver
+        app.kubernetes.io/part-of: easytravel
+        app.kubernetes.io/managed-by: kubernetes
+        app.kubernetes.io/created-by: brayden
       annotations:
         contact: "demo@dynatrace.com"
         priority: "high"

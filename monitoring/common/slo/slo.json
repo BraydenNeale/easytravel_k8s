@@ -1,0 +1,13 @@
+{
+    "enabled": "{{ .enabled }}",
+    "name": "{{ .name }}",
+    "useRateMetric": "{{ .use_rate_metric }}",
+    "metricRate": "{{ .metric_rate }}",
+    "metricNumerator": "{{ .metric_numerator }}",
+    "metricDenominator": "{{ .metric_demoninator}}",
+    "evaluationType": "{{ .evaluation_type }}",
+    "filter": "{{ .selector }}",
+    "target": "{{ .target }}",
+    "warning": "{{ .warning }}",
+    "timeframe": "{{ .timeframe }}"
+  }

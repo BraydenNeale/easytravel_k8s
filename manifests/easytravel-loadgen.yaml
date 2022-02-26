@@ -17,6 +17,13 @@ spec:
       labels:
         app: easytravel
         tier: loadgen
+        app.kubernetes.io/name: easytravel-loadgen
+        app.kubernetes.io/instance: easytravel-loadgen-1.0.0
+        app.kubernetes.io/version: "1.0.0"
+        app.kubernetes.io/component: loadgen
+        app.kubernetes.io/part-of: easytravel
+        app.kubernetes.io/managed-by: kubernetes
+        app.kubernetes.io/created-by: brayden
       annotations:
         contact: "demo@dynatrace.com"
         priority: "low"
