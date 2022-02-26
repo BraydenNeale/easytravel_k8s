@@ -1,0 +1,9 @@
+config:
+  - easy_travel: "/common/management-zone/mz_tag.json"
+
+easytravel:
+  - name: "Application: easytravel"
+  - description: "All easytravel Dynatrace entities"
+  - tag_context: "[Kubernetes]"
+  - tag_key: "app.kubernetes.io/part-of"
+  - tag_value: "easytravel"

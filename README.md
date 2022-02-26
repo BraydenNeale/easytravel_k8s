@@ -20,7 +20,7 @@ Powershell
 $ENV:NEW_CLI = 1
 $ENV:DYNATRACE_URL = 'https://[ID].live.dynatrace.com'
 $ENV:DYNATRACE_TOKEN = 'dtco1.****'
-$ENV:EASYTRAVEL_EMAIL_CONTACTS = 'test@example.com, hello@world.com'
+$ENV:EASYTRAVEL_EMAIL_CONTACTS = '"test@example.com", "hello@world.com"'
 ```
 
 Bash
@@ -28,7 +28,7 @@ Bash
 export NEW_CLI = 1
 export DYNATRACE_URL = 'https://[ID].live.dynatrace.com'
 export DYNATRACE_TOKEN = 'dtco1.****'
-export EASYTRAVEL_EMAIL_CONTACTS = 'test@example.com, hello@world.com'
+export EASYTRAVEL_EMAIL_CONTACTS = '"test@example.com", "hello@world.com"'
 ```
 
 ### Run Monaco

@@ -1,0 +1,9 @@
+config:
+  - easytravel_email_notification: "/common/notification/email.json"
+
+easytravel_email_notification:
+  - name: "easytravel email"
+  - alerting_profile_id: "/projects/easytravel/alerting-profile/easytravel_alerts.id"
+  - subject: "easytravel alert: {State} Problem {ProblemID}: {ImpactedEntity}"
+  - alert_active: "true"
+  - receivers: "{{ .Env.EASYTRAVEL_EMAIL_CONTACTS }}"

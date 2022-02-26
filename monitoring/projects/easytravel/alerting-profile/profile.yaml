@@ -1,0 +1,15 @@
+config:
+  - easytravel_alerts: "/common/alerting-profile/tag_profile.json"
+
+alf_prod_alerts:
+  - name: "easytravel Alerts"
+  - tag_context: "[Kubernetes]"
+  - tag_key: "app.kubernetes.io/part-of"
+  - tag_value: "easytravel"
+  - custom_delay_mins: "5"
+  - availability_delay_mins: "5"
+  - monitoring_unavailable_delay_mins: "5"
+  - performance_delay_mins: "5"
+  - error_delay_mins: "5"
+  - resource_delay_mins: "5"
+  - management_zone_id: "/projects/easytravel/management-zone/easytravel_mz.id"
