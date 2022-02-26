@@ -1,0 +1,16 @@
+{
+  "name": "{{ .name }}",
+  "description": "{{ .description }}",
+  "rules": [],
+  "dimensionalRules": [],
+  "entitySelectorBasedRules": [
+    {
+      "enabled": true,
+      "entitySelector": "{{ .selector1 }}"
+    },
+    {
+      "enabled": true,
+      "entitySelector": "{{ .selector2 }}"
+    }
+  ]
+}
