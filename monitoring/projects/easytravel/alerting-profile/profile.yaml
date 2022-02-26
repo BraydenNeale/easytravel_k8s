@@ -1,9 +1,9 @@
 config:
   - easytravel_alerts: "/common/alerting-profile/tag_profile.json"
 
-alf_prod_alerts:
+easytravel_alerts:
   - name: "easytravel Alerts"
-  - tag_context: "[Kubernetes]"
+  - tag_context: "KUBERNETES"
   - tag_key: "app.kubernetes.io/part-of"
   - tag_value: "easytravel"
   - custom_delay_mins: "5"

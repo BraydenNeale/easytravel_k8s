@@ -6,4 +6,4 @@ easytravel_email_notification:
   - alerting_profile_id: "/projects/easytravel/alerting-profile/easytravel_alerts.id"
   - subject: "easytravel alert: {State} Problem {ProblemID}: {ImpactedEntity}"
   - alert_active: "true"
-  - receivers: "{{ .Env.EASYTRAVEL_EMAIL_CONTACTS }}"
+  - receivers: '{{ .Env.EASYTRAVEL_EMAIL_CONTACTS }}'
